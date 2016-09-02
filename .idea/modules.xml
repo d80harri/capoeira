@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira_main.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira_main.iml" group="capoeira" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira_test.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira_test.iml" group="capoeira" />
+    </modules>
+  </component>
+</project>
