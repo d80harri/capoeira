@@ -2,7 +2,11 @@ package net.d80harri.capoeira;
 
 import net.d80harri.capoeira.entities.*;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -86,6 +90,18 @@ public class DataSetup {
         add(new WorkoutItem(1, workout2, esq_ponte));
         add(new WorkoutItem(2, workout2, comp_esq_ponte));
 
+        // ===============================================================================================
+        // Exercise Logs
+        // ===============================================================================================
+        add(new ExerciseLog(rast_pir_ginga, createDate(2016, Month.AUGUST, 28), Quality.OPEN, null));
+        add(new ExerciseLog(esq_ponte, createDate(2016, Month.AUGUST, 28), null, null));
+        add(new ExerciseLog(ponte, createDate(2016, Month.AUGUST, 28), null, null));
 
+        add(new ExerciseLog(rast_pir_ginga, createDate(2016, Month.AUGUST, 31), Quality.ROUGH, Effort.RELAXED));
+        add(new ExerciseLog(qdr, createDate(2016, Month.AUGUST, 31), Quality.ROUGH, Effort.CHALLENGING));
+    }
+
+    private Date createDate(int year, Month august, int dayOfMonth) {
+        return Date.from(LocalDate.of(year, august, dayOfMonth).atStartOfDay().toInstant(ZoneOffset.UTC));
     }
 }

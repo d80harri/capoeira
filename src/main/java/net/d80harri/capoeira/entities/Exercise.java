@@ -19,6 +19,8 @@ public class Exercise extends CapoeiraEntity {
     private final Set<ExerciseDependency> successors = new HashSet<>();
     @OneToMany(mappedBy = "exercise")
     private final Set<WorkoutItem> workoutItems = new HashSet<>();
+    @OneToMany(mappedBy = "exercise")
+    private final Set<ExerciseLog> logs = new HashSet<>();
 
     public Exercise() {}
 
@@ -49,5 +51,9 @@ public class Exercise extends CapoeiraEntity {
 
     public Set<ExerciseDependency> getSuccessors() {
         return successors;
+    }
+
+    public Set<ExerciseLog> getLogs() {
+        return logs;
     }
 }
