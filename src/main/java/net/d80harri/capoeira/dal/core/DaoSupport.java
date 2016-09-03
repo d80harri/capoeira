@@ -1,15 +1,14 @@
-package net.d80harri.capoeira;
+package net.d80harri.capoeira.dal.core;
 
-import net.d80harri.capoeira.entities.CapoeiraEntity;
 import org.hibernate.Session;
 
 /**
  * Created by d80harri on 02.09.16.
  */
-public class SimpleDao {
+public class DaoSupport {
     private Session session;
 
-    public SimpleDao(Session session) {
+    public DaoSupport(Session session) {
         this.session = session;
     }
 

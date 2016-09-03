@@ -1,6 +1,9 @@
-package net.d80harri.capoeira;
+package net.d80harri.capoeira.dal;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.io.File;
@@ -9,6 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Created by d80harri on 02.09.16.
@@ -69,14 +73,35 @@ public class Utils {
     public static SessionFactory createSessionFactory() {
         try {
             Configuration configure = new Configuration().
-                    configure(Main.class.getResource("/hibernate.cfg.xml"));
-            for (Class type : getClasses("net.d80harri.capoeira.entities")) {
+                    configure(Utils.class.getResource("/hibernate.cfg.xml"));
+            for (Class type : getClasses("net.d80harri.capoeira.dal.data")) {
                 configure = configure.addAnnotatedClass(type);
             }
             return configure.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
+        }
+    }
+
+    public static void withinSession(SessionFactory factory, Consumer<Session> consumer) {
+        Session session = factory.openSession();
+        try {
+            consumer.accept(session);
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void withinTransaction(Session session, Runnable consumer) {
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            consumer.run();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
         }
     }
 }

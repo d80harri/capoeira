@@ -1,4 +1,4 @@
-package net.d80harri.capoeira.entities;
+package net.d80harri.capoeira.dal.core;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +13,12 @@ public abstract class CapoeiraEntity {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
+
+    public CapoeiraEntity() {}
+
+    public CapoeiraEntity(String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return id;

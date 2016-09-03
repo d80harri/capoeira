@@ -1,7 +1,8 @@
-package net.d80harri.capoeira.entities;
+package net.d80harri.capoeira.dal.data;
+
+import net.d80harri.capoeira.dal.core.CapoeiraEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**

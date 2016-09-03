@@ -1,4 +1,6 @@
-package net.d80harri.capoeira.entities;
+package net.d80harri.capoeira.dal.data;
+
+import net.d80harri.capoeira.dal.core.CapoeiraEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,6 +25,10 @@ public class Exercise extends CapoeiraEntity {
     private final Set<ExerciseLog> logs = new HashSet<>();
 
     public Exercise() {}
+
+    public Exercise(String id) {
+        super(id);
+    }
 
     public Exercise(String title, String hints) {
         this.title = title;
