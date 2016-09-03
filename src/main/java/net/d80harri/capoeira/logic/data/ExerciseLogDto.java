@@ -17,7 +17,7 @@ public class ExerciseLogDto extends CapoeiraDto {
     private ToOne<ExerciseDto> exercise;
 
     public ExerciseLogDto() {}
-    
+
     public ExerciseLogDto(Date timestamp, ToOne<ExerciseDto> exercise, Quality quality, Effort effort) {
         this.timestamp = timestamp;
         this.effort = effort;

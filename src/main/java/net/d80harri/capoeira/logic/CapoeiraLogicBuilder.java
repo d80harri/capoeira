@@ -149,8 +149,23 @@ public class CapoeiraLogicBuilder {
         return result;
     }
 
+    public void persist(CapoeiraDto dto1, CapoeiraDto dto2, CapoeiraDto... moreDtos) {
+        persist(dto1);
+        persist(dto2);
+
+        for (CapoeiraDto i : moreDtos) {
+            persist(i);
+        }
+    }
+
+    public <T extends CapoeiraDto> T persist(T dto) {
+        IBusinessLogic<T> logic = (IBusinessLogic<T>) getLogic(dto.getClass());
+        return logic.persist(dto);
+    }
+
     private <U extends CapoeiraDto, T extends IBusinessLogic<U>> T add(Class<U> type, T logic) {
         businessLogicMap.put(type, logic);
         return logic;
     }
+
 }
