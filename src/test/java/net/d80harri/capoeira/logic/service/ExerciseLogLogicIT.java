@@ -9,6 +9,9 @@ import net.d80harri.capoeira.logic.CapoeiraLogicBuilder;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
 import net.d80harri.capoeira.logic.data.ExerciseDto;
 import net.d80harri.capoeira.logic.data.ExerciseLogDto;
+import net.d80harri.capoeira.util.DateUtils;
+import org.assertj.core.api.Assertions;
+import org.assertj.core.util.DateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +19,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
 /**
@@ -24,6 +29,8 @@ import java.util.Date;
 public class ExerciseLogLogicIT {
 
     private ExerciseLogLogic target;
+    private ExerciseLogic exerciseLogic;
+
     private Session session;
     private Transaction tx;
     private CapoeiraLogicBuilder builder;
@@ -35,6 +42,7 @@ public class ExerciseLogLogicIT {
         tx = session.beginTransaction();
 
         builder = new CapoeiraLogicBuilder(new CapoeiraDalBuilder(session));
+        exerciseLogic = builder.getLogic(ExerciseDto.class);
     }
 
     @After
@@ -51,13 +59,20 @@ public class ExerciseLogLogicIT {
     public void testUpdateMeasurementsWhenExerciseLogIsCreated() {
         ExerciseDto e1 = persist(new ExerciseDto("ex1", "ex1 hints"));
 
-        // TODO: assert that e1.getLastLog() is null
+        ExerciseLog lastLog = exerciseLogic.getLastLog(e1.getId());
+        Assertions.assertThat(lastLog).isNull();
 
-        ExerciseLogDto log = persist(new ExerciseLogDto(new Date(),e1,Quality.BROKEN, Effort.MAX_EFFORT));
+        ExerciseLogDto expectedLastLog = persist(new ExerciseLogDto(new Date(),e1,Quality.BROKEN, Effort.MAX_EFFORT));
+        lastLog = exerciseLogic.getLastLog(e1.getId());
+        Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        // TODO: assert that e1.getLastLog() is log
-        // TODO: insert log whose timestamp is older than an already existant timestamp and assert that e1.getLastLog has not changed
+        persist(new ExerciseLogDto(DateUtils.add(DateUtil.now(), -1, ChronoUnit.DAYS), e1, Quality.OPEN, Effort.CHALLENGING));
+        lastLog = exerciseLogic.getLastLog(e1.getId());
+        Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
+        expectedLastLog = persist(new ExerciseLogDto(DateUtils.add(DateUtil.now(), 1, ChronoUnit.DAYS), e1, Quality.OPEN, Effort.CHALLENGING));
+        lastLog = exerciseLogic.getLastLog(e1.getId());
+        Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
     }
 
     public <T extends CapoeiraDto> T persist(T dto) {
