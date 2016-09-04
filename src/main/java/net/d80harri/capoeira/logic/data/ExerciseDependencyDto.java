@@ -15,7 +15,11 @@ public class ExerciseDependencyDto extends CapoeiraDto {
 
     public ExerciseDependencyDto() {}
 
-    public ExerciseDependencyDto(ToOne<ExerciseDto> successor, ToOne<ExerciseDto> predecessor) {
+    public ExerciseDependencyDto(ExerciseDto predecessor, ExerciseDto successor) {
+        this(ToOne.valueOf(successor), ToOne.valueOf(predecessor));
+    }
+
+    public ExerciseDependencyDto(ToOne<ExerciseDto> predecessor, ToOne<ExerciseDto> successor) {
         this.successor = successor;
         this.predecessor = predecessor;
     }
