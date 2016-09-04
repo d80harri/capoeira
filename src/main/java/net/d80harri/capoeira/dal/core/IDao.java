@@ -5,4 +5,6 @@ package net.d80harri.capoeira.dal.core;
  */
 public interface IDao<T extends CapoeiraEntity> {
     void persist(T entity);
+
+    T getById(String id);
 }

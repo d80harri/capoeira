@@ -9,6 +9,6 @@ import net.d80harri.capoeira.dal.data.Exercise;
  */
 public class ExerciseDao extends SupportedDao<Exercise> {
     public ExerciseDao(DaoSupport daoSupport) {
-        super(daoSupport);
+        super(Exercise.class, daoSupport);
     }
 }

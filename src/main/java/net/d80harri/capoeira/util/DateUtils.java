@@ -1,5 +1,6 @@
 package net.d80harri.capoeira.util;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.TemporalUnit;
@@ -16,8 +17,10 @@ public class DateUtils {
         return new Date();
     }
 
-    public static Date add(Date date, long value, TemporalUnit unit) {
-        LocalDateTime local = LocalDateTime.from(date.toInstant()).plus(value, unit);
-        return Date.from(local.toInstant(ZoneOffset.UTC));
+    public static Date addDays(Date date, int value) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, value);
+        return calendar.getTime();
     }
 }

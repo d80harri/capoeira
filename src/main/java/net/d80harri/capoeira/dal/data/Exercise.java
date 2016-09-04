@@ -3,6 +3,7 @@ package net.d80harri.capoeira.dal.data;
 import net.d80harri.capoeira.dal.core.CapoeiraEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,8 @@ public class Exercise extends CapoeiraEntity {
     private final Set<WorkoutItem> workoutItems = new HashSet<>();
     @OneToMany(mappedBy = "exercise")
     private final Set<ExerciseLog> logs = new HashSet<>();
+    @ManyToOne
+    private ExerciseLog lastLog;
 
     public Exercise() {}
 
@@ -61,5 +64,13 @@ public class Exercise extends CapoeiraEntity {
 
     public Set<ExerciseLog> getLogs() {
         return logs;
+    }
+
+    public ExerciseLog getLastLog() {
+        return lastLog;
+    }
+
+    public void setLastLog(ExerciseLog lastLog) {
+        this.lastLog = lastLog;
     }
 }

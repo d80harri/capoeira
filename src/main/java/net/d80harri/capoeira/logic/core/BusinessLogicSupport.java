@@ -26,4 +26,24 @@ public class BusinessLogicSupport<T extends CapoeiraDto, U extends CapoeiraEntit
         T persistedDto = entity2DtoMapper.map(entity);
         return persistedDto;
     }
+
+    public IDao<U> getDao() {
+        return dao;
+    }
+
+    public IMapper<T, U> getDto2EntityMapper() {
+        return dto2EntityMapper;
+    }
+
+    public IMapper<U, T> getEntity2DtoMapper() {
+        return entity2DtoMapper;
+    }
+
+    public U map(T dto) {
+        return getDto2EntityMapper().map(dto);
+    }
+
+    public T map(U entity) {
+        return getEntity2DtoMapper().map(entity);
+    }
 }

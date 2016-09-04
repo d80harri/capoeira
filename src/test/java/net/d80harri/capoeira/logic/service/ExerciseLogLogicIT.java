@@ -66,11 +66,11 @@ public class ExerciseLogLogicIT {
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        persist(new ExerciseLogDto(DateUtils.add(DateUtil.now(), -1, ChronoUnit.DAYS), e1, Quality.OPEN, Effort.CHALLENGING));
+        persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), -1), e1, Quality.OPEN, Effort.CHALLENGING));
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        expectedLastLog = persist(new ExerciseLogDto(DateUtils.add(DateUtil.now(), 1, ChronoUnit.DAYS), e1, Quality.OPEN, Effort.CHALLENGING));
+        expectedLastLog = persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), 1), e1, Quality.OPEN, Effort.CHALLENGING));
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
     }

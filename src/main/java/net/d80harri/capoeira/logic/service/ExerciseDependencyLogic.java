@@ -9,7 +9,7 @@ import net.d80harri.capoeira.logic.data.ExerciseDependencyDto;
 /**
  * Created by d80harri on 03.09.16.
  */
-public class ExerciseDependencyLogic extends SupportedBusinessLogic<ExerciseDependencyDto> {
+public class ExerciseDependencyLogic extends SupportedBusinessLogic<ExerciseDependencyDto, ExerciseDependency> {
     public ExerciseDependencyLogic(BusinessLogicSupport<ExerciseDependencyDto, ExerciseDependency> support) {
         super(support);
     }

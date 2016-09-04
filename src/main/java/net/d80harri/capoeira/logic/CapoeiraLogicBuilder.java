@@ -138,7 +138,7 @@ public class CapoeiraLogicBuilder {
         this.exerciseDependencyLogic = add(ExerciseDependencyDto.class, new ExerciseDependencyLogic(exerciseDependencyLogicSupport));
         this.workoutLogic = add(WorkoutDto.class, new WorkoutLogic(workoutLogicSupport));
         this.workoutItemLogic = add(WorkoutItemDto.class, new WorkoutItemLogic(workoutItemLogicSupport));
-        this.exerciseLogLogic = add(ExerciseLogDto.class, new ExerciseLogLogic(exerciseLogLogicSupport));
+        this.exerciseLogLogic = add(ExerciseLogDto.class, new ExerciseLogLogic(exerciseLogLogicSupport, dalBuilder.getExerciseDao()));
     }
 
     public <U extends CapoeiraDto, T extends IBusinessLogic<U>> T getLogic(Class<U> type) {
