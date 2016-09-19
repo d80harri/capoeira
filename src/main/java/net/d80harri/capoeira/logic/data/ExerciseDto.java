@@ -1,6 +1,5 @@
 package net.d80harri.capoeira.logic.data;
 
-import net.d80harri.capoeira.dal.data.Exercise;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
 
 /**

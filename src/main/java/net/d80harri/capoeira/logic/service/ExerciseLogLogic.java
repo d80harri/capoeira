@@ -1,7 +1,7 @@
 package net.d80harri.capoeira.logic.service;
 
-import net.d80harri.capoeira.dal.data.Exercise;
-import net.d80harri.capoeira.dal.data.ExerciseLog;
+import net.d80harri.capoeira.dal.data.Element;
+import net.d80harri.capoeira.dal.data.ElementLog;
 import net.d80harri.capoeira.dal.service.ExerciseDao;
 import net.d80harri.capoeira.logic.core.BusinessLogicSupport;
 import net.d80harri.capoeira.logic.core.SupportedBusinessLogic;
@@ -12,30 +12,30 @@ import java.util.Date;
 /**
  * Created by d80harri on 03.09.16.
  */
-public class ExerciseLogLogic extends SupportedBusinessLogic<ExerciseLogDto, ExerciseLog> {
+public class ExerciseLogLogic extends SupportedBusinessLogic<ExerciseLogDto, ElementLog> {
     private final ExerciseDao exerciseDao;
 
-    public ExerciseLogLogic(BusinessLogicSupport<ExerciseLogDto, ExerciseLog> support, ExerciseDao exerciseDao) {
+    public ExerciseLogLogic(BusinessLogicSupport<ExerciseLogDto, ElementLog> support, ExerciseDao exerciseDao) {
         super(support);
         this.exerciseDao = exerciseDao;
     }
 
     @Override
     public ExerciseLogDto persist(ExerciseLogDto dto) {
-        ExerciseLog log = support.map(dto);
+        ElementLog log = support.map(dto);
         String exerciseId = dto.getExercise().getId();
-        Exercise exercise = exerciseDao.getById(exerciseId);
+        Element element = exerciseDao.getById(exerciseId);
 
-        ExerciseLog currentLastLog = exercise.getLastLog();
-        ExerciseLog nextLastLog = retrieveLatestLog(log, currentLastLog);
+        ElementLog currentLastLog = element.getLastLog();
+        ElementLog nextLastLog = retrieveLatestLog(log, currentLastLog);
 
-        exercise.setLastLog(nextLastLog);
+        element.setLastLog(nextLastLog);
         dao.persist(log);
         return support.map(log);
     }
 
-    private ExerciseLog retrieveLatestLog(ExerciseLog log, ExerciseLog currentLastLog) {
-        ExerciseLog result = null;
+    private ElementLog retrieveLatestLog(ElementLog log, ElementLog currentLastLog) {
+        ElementLog result = null;
         if (currentLastLog == null) {
             result = log;
         } else {

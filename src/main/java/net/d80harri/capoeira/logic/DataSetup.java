@@ -5,7 +5,6 @@ import net.d80harri.capoeira.dal.Utils;
 import net.d80harri.capoeira.dal.data.*;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
 import net.d80harri.capoeira.logic.core.IBusinessLogic;
-import net.d80harri.capoeira.logic.core.ToOne;
 import net.d80harri.capoeira.logic.data.*;
 import org.hibernate.SessionFactory;
 
@@ -71,7 +70,7 @@ public class DataSetup {
         ExerciseDto neg_qdr = add(new ExerciseDto("Negativa - Queda de Rins", "Negativa (right leg extended) - Queda de Rins to the right - switch legs - Negativa other side"));
 
         // ===============================================================================================
-        // Exercise Dependencies
+        // BaseWord Dependencies
         // ===============================================================================================
         add(new ExerciseDependencyDto(par_qdr, qdr_neg_role));
         add(new ExerciseDependencyDto(qdr_neg_role, esq_qdr_neg_role));
@@ -110,14 +109,14 @@ public class DataSetup {
         add(new WorkoutItemDto(2, workout2, comp_esq_ponte));
 
         // ===============================================================================================
-        // Exercise Logs
+        // BaseWord Logs
         // ===============================================================================================
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), rast_pir_ginga, Quality.OPEN, null));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), esq_ponte, null, null));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), ponte, null, null));
+        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), rast_pir_ginga, Quality.UNKNOWN));
+        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), esq_ponte, null));
+        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), ponte, null));
 
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), rast_pir_ginga, Quality.ROUGH, Effort.RELAXED));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), par_qdr, Quality.ROUGH, Effort.CHALLENGING));
+        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), rast_pir_ginga, Quality.POSSIBLE));
+        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), par_qdr, Quality.POSSIBLE));
     }
 
     public static void main(String[] args) {

@@ -9,32 +9,32 @@ import javax.persistence.ManyToOne;
  * Created by d80harri on 02.09.16.
  */
 @Entity
-public class ExerciseDependency extends CapoeiraEntity {
+public class Vertex extends CapoeiraEntity {
     @ManyToOne
-    private Exercise successor;
+    private Element successor;
     @ManyToOne
-    private Exercise predecessor;
+    private Element predecessor;
 
-    public ExerciseDependency() {}
+    public Vertex() {}
 
-    public ExerciseDependency(Exercise predecessor, Exercise successor) {
+    public Vertex(Element predecessor, Element successor) {
         this.successor = successor;
         this.predecessor = predecessor;
     }
 
-    public void setSuccessor(Exercise successor) {
+    public void setSuccessor(Element successor) {
         this.successor = successor;
     }
 
-    public Exercise getSuccessor() {
+    public Element getSuccessor() {
         return successor;
     }
 
-    public Exercise getPredecessor() {
+    public Element getPredecessor() {
         return predecessor;
     }
 
-    public void setPredecessor(Exercise predecessor) {
+    public void setPredecessor(Element predecessor) {
         this.predecessor = predecessor;
     }
 }

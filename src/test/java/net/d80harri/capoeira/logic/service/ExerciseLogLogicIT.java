@@ -2,8 +2,7 @@ package net.d80harri.capoeira.logic.service;
 
 import net.d80harri.capoeira.dal.CapoeiraDalBuilder;
 import net.d80harri.capoeira.dal.Utils;
-import net.d80harri.capoeira.dal.data.Effort;
-import net.d80harri.capoeira.dal.data.ExerciseLog;
+import net.d80harri.capoeira.dal.data.ElementLog;
 import net.d80harri.capoeira.dal.data.Quality;
 import net.d80harri.capoeira.logic.CapoeiraLogicBuilder;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
@@ -19,8 +18,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.Date;
 
 /**
@@ -59,18 +56,18 @@ public class ExerciseLogLogicIT {
     public void testUpdateMeasurementsWhenExerciseLogIsCreated() {
         ExerciseDto e1 = persist(new ExerciseDto("ex1", "ex1 hints"));
 
-        ExerciseLog lastLog = exerciseLogic.getLastLog(e1.getId());
+        ElementLog lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog).isNull();
 
-        ExerciseLogDto expectedLastLog = persist(new ExerciseLogDto(new Date(),e1,Quality.BROKEN, Effort.MAX_EFFORT));
+        ExerciseLogDto expectedLastLog = persist(new ExerciseLogDto(new Date(),e1,Quality.IMPOSSIBLE));
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), -1), e1, Quality.OPEN, Effort.CHALLENGING));
+        persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), -1), e1, Quality.UNKNOWN));
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        expectedLastLog = persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), 1), e1, Quality.OPEN, Effort.CHALLENGING));
+        expectedLastLog = persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), 1), e1, Quality.UNKNOWN));
         lastLog = exerciseLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
     }

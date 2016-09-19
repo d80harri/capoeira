@@ -10,21 +10,19 @@ import java.util.Date;
  * Created by d80harri on 02.09.16.
  */
 @Entity
-public class ExerciseLog extends CapoeiraEntity {
+public class ElementLog extends CapoeiraEntity {
     private Date timestamp;
-    private Effort effort;
     private Quality quality;
 
     @ManyToOne
-    private Exercise exercise;
+    private Element element;
 
-    public ExerciseLog() {
+    public ElementLog() {
     }
 
-    public ExerciseLog(Exercise exercise, Date timestamp, Quality quality, Effort effort) {
-        this.exercise = exercise;
+    public ElementLog(Element element, Date timestamp, Quality quality) {
+        this.element = element;
         this.timestamp = timestamp;
-        this.effort = effort;
         this.quality = quality;
     }
 
@@ -36,14 +34,6 @@ public class ExerciseLog extends CapoeiraEntity {
         this.timestamp = timestamp;
     }
 
-    public Effort getEffort() {
-        return effort;
-    }
-
-    public void setEffort(Effort effort) {
-        this.effort = effort;
-    }
-
     public Quality getQuality() {
         return quality;
     }
@@ -52,11 +42,11 @@ public class ExerciseLog extends CapoeiraEntity {
         this.quality = quality;
     }
 
-    public Exercise getExercise() {
-        return exercise;
+    public Element getWord() {
+        return element;
     }
 
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
+    public void setWord(Element element) {
+        this.element = element;
     }
 }

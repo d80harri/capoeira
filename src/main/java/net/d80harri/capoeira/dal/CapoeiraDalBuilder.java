@@ -12,8 +12,6 @@ public class CapoeiraDalBuilder {
     private final ExerciseDao exerciseDao;
     private final ExerciseDependencyDao exerciseDependencyDao;
     private final ExerciseLogDao exerciseLogDao;
-    private final WorkoutDao workoutDao;
-    private final WorkoutItemDao workoutItemDao;
 
     public CapoeiraDalBuilder(Session session) {
         DaoSupport daoSupport = new DaoSupport(session);
@@ -22,8 +20,6 @@ public class CapoeiraDalBuilder {
         this.exerciseDao = new ExerciseDao(daoSupport);
         this.exerciseDependencyDao = new ExerciseDependencyDao(daoSupport);
         this.exerciseLogDao = new ExerciseLogDao(daoSupport);
-        this.workoutDao = new WorkoutDao(daoSupport);
-        this.workoutItemDao = new WorkoutItemDao(daoSupport);
     }
 
     public ExerciseDao getExerciseDao() {
@@ -36,14 +32,6 @@ public class CapoeiraDalBuilder {
 
     public ExerciseLogDao getExerciseLogDao() {
         return exerciseLogDao;
-    }
-
-    public WorkoutDao getWorkoutDao() {
-        return workoutDao;
-    }
-
-    public WorkoutItemDao getWorkoutItemDao() {
-        return workoutItemDao;
     }
 
     public Session getSession() {
