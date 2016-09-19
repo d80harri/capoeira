@@ -17,7 +17,7 @@ public class ExerciseLogic extends SupportedBusinessLogic<ExerciseDto, Word> {
 
 
     public ElementLog getLastLog(String exerciseId) {
-        Element element = this.dao.getById(exerciseId);
+        Element element = this.dao.getById(Element.class, exerciseId);
         return element.getLastLog();
     }
 }

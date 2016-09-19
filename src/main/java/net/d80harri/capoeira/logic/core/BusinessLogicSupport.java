@@ -1,20 +1,18 @@
 package net.d80harri.capoeira.logic.core;
 
 import net.d80harri.capoeira.dal.core.CapoeiraEntity;
-import net.d80harri.capoeira.dal.core.IDao;
+import net.d80harri.capoeira.dal.core.CapoeiraDao;
 import net.d80harri.capoeira.mapper.IMapper;
-
-import java.util.function.Function;
 
 /**
  * Created by d80harri on 03.09.16.
  */
 public class BusinessLogicSupport<T extends CapoeiraDto, U extends CapoeiraEntity> {
-    private final IDao<U> dao;
+    private final CapoeiraDao dao;
     private final IMapper<T, U> dto2EntityMapper;
     private final IMapper<U, T> entity2DtoMapper;
 
-    public BusinessLogicSupport(IDao<U> dao, IMapper<T, U> dto2EntityMapper, IMapper<U, T> entity2DtoMapper) {
+    public BusinessLogicSupport(CapoeiraDao dao, IMapper<T, U> dto2EntityMapper, IMapper<U, T> entity2DtoMapper) {
         this.dao = dao;
         this.dto2EntityMapper = dto2EntityMapper;
         this.entity2DtoMapper = entity2DtoMapper;
@@ -27,7 +25,7 @@ public class BusinessLogicSupport<T extends CapoeiraDto, U extends CapoeiraEntit
         return persistedDto;
     }
 
-    public IDao<U> getDao() {
+    public CapoeiraDao getDao() {
         return dao;
     }
 

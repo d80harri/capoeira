@@ -1,8 +1,8 @@
 package net.d80harri.capoeira.logic.service;
 
+import net.d80harri.capoeira.dal.core.CapoeiraDao;
 import net.d80harri.capoeira.dal.data.Element;
 import net.d80harri.capoeira.dal.data.ElementLog;
-import net.d80harri.capoeira.dal.service.ExerciseDao;
 import net.d80harri.capoeira.logic.core.BusinessLogicSupport;
 import net.d80harri.capoeira.logic.core.SupportedBusinessLogic;
 import net.d80harri.capoeira.logic.data.ExerciseLogDto;
@@ -13,9 +13,9 @@ import java.util.Date;
  * Created by d80harri on 03.09.16.
  */
 public class ExerciseLogLogic extends SupportedBusinessLogic<ExerciseLogDto, ElementLog> {
-    private final ExerciseDao exerciseDao;
+    private final CapoeiraDao exerciseDao;
 
-    public ExerciseLogLogic(BusinessLogicSupport<ExerciseLogDto, ElementLog> support, ExerciseDao exerciseDao) {
+    public ExerciseLogLogic(BusinessLogicSupport<ExerciseLogDto, ElementLog> support, CapoeiraDao exerciseDao) {
         super(support);
         this.exerciseDao = exerciseDao;
     }
@@ -24,7 +24,7 @@ public class ExerciseLogLogic extends SupportedBusinessLogic<ExerciseLogDto, Ele
     public ExerciseLogDto persist(ExerciseLogDto dto) {
         ElementLog log = support.map(dto);
         String exerciseId = dto.getExercise().getId();
-        Element element = exerciseDao.getById(exerciseId);
+        Element element = exerciseDao.getById(Element.class, exerciseId);
 
         ElementLog currentLastLog = element.getLastLog();
         ElementLog nextLastLog = retrieveLatestLog(log, currentLastLog);

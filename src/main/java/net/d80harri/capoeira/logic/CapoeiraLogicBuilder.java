@@ -90,13 +90,13 @@ public class CapoeiraLogicBuilder {
             }
         };
 
-        BusinessLogicSupport<ExerciseDto, Word> exerciseBLSupport = new BusinessLogicSupport<>(dalBuilder.getExerciseDao(), exerciseDto2EntityMapper, exerciseEntity2DtoMapper);
-        BusinessLogicSupport<ExerciseDependencyDto, Vertex> exerciseDependencyLogicSupport = new BusinessLogicSupport<>(dalBuilder.getExerciseDependencyDao(), exerciseDependencyDto2EntityMapper, exerciseDependencyEntity2DtoMapper);
-        BusinessLogicSupport<ExerciseLogDto,ElementLog> exerciseLogLogicSupport = new BusinessLogicSupport<>(dalBuilder.getExerciseLogDao(), exerciseLogDto2EntityMapper, exerciseLogEntity2DtoMapper);
+        BusinessLogicSupport<ExerciseDto, Word> exerciseBLSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDto2EntityMapper, exerciseEntity2DtoMapper);
+        BusinessLogicSupport<ExerciseDependencyDto, Vertex> exerciseDependencyLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDependencyDto2EntityMapper, exerciseDependencyEntity2DtoMapper);
+        BusinessLogicSupport<ExerciseLogDto,ElementLog> exerciseLogLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseLogDto2EntityMapper, exerciseLogEntity2DtoMapper);
 
         this.exerciseLogic = add(ExerciseDto.class, new ExerciseLogic(exerciseBLSupport));
         this.exerciseDependencyLogic = add(ExerciseDependencyDto.class, new ExerciseDependencyLogic(exerciseDependencyLogicSupport));
-        this.exerciseLogLogic = add(ExerciseLogDto.class, new ExerciseLogLogic(exerciseLogLogicSupport, dalBuilder.getExerciseDao()));
+        this.exerciseLogLogic = add(ExerciseLogDto.class, new ExerciseLogLogic(exerciseLogLogicSupport, dalBuilder.getDao()));
     }
 
     public <U extends CapoeiraDto, T extends IBusinessLogic<U>> T getLogic(Class<U> type) {
