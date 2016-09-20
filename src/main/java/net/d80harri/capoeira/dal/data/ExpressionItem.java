@@ -14,6 +14,16 @@ public class ExpressionItem extends CapoeiraEntity {
     private Expression expression;
     @ManyToOne
     private Word word;
+    private int seqNr;
+
+    public ExpressionItem() {
+    }
+
+    public ExpressionItem(Expression expression, Word word, int seqNr) {
+        this.expression = expression;
+        this.word = word;
+        this.seqNr = seqNr;
+    }
 
     public Expression getExpression() {
         return expression;
@@ -30,4 +40,13 @@ public class ExpressionItem extends CapoeiraEntity {
     public void setWord(Word word) {
         this.word = word;
     }
+
+    public int getSeqNr() {
+        return seqNr;
+    }
+
+    public void setSeqNr(int seqNr) {
+        this.seqNr = seqNr;
+    }
+
 }
