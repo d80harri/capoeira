@@ -20,9 +20,9 @@ import java.util.Map;
  */
 public class CapoeiraLogicBuilder {
 
-    private final static IMapper<Vertex, ExerciseDependencyDto> exerciseDependencyEntity2DtoMapper = new BaseMapper<Vertex, ExerciseDependencyDto>(ExerciseDependencyDto.class) {
+    private final static IMapper<Vertex, VertexDto> exerciseDependencyEntity2DtoMapper = new BaseMapper<Vertex, VertexDto>(VertexDto.class) {
         @Override
-        protected void mapInto(Vertex from, ExerciseDependencyDto to) {
+        protected void mapInto(Vertex from, VertexDto to) {
             to.setId(from.getId());
             to.setPredecessor(ToOne.valueOf(from.getPredecessor().getId()));
             to.setSuccessor(ToOne.valueOf(from.getSuccessor().getId()));
@@ -30,73 +30,93 @@ public class CapoeiraLogicBuilder {
     };
 
     private final Map<Class, IBusinessLogic> businessLogicMap = new HashMap<>();
-    private final ExerciseLogic exerciseLogic;
-    private final ExerciseDependencyLogic exerciseDependencyLogic;
-    private final ExerciseLogLogic exerciseLogLogic;
+    private final VertexLogic vertexLogic;
+    private final ElementLogLogic elementLogLogic;
+    private final BaseWordLogic baseWordLogic;
 
     public <T extends CapoeiraDto, U extends CapoeiraEntity> CapoeiraLogicBuilder(CapoeiraDalBuilder dalBuilder) {
-        IMapper<ExerciseDto, Word> exerciseDto2EntityMapper = new BaseMapper<ExerciseDto, Word>(Word.class) {
+        IMapper<WordDto, Word> exerciseDto2EntityMapper = new BaseMapper<WordDto, Word>(Word.class) {
             @Override
-            protected void mapInto(ExerciseDto from, Word to) {
+            protected void mapInto(WordDto from, Word to) {
                 to.setTitle(from.getTitle());
                 to.setHints(from.getHints());
                 to.setId(from.getId());
             }
         };
 
-        BaseMapper<Word, ExerciseDto> exerciseEntity2DtoMapper = new BaseMapper<Word, ExerciseDto>(ExerciseDto.class) {
+        BaseMapper<Word, WordDto> exerciseEntity2DtoMapper = new BaseMapper<Word, WordDto>(WordDto.class) {
             @Override
-            protected void mapInto(Word from, ExerciseDto to) {
+            protected void mapInto(Word from, WordDto to) {
                 to.setTitle(from.getTitle());
                 to.setHints(from.getHints());
                 to.setId(from.getId());
             }
         };
 
-        IMapper<ExerciseDependencyDto, Vertex> exerciseDependencyDto2EntityMapper = new BaseMapper<ExerciseDependencyDto, Vertex>(Vertex.class) {
+        IMapper<VertexDto, Vertex> exerciseDependencyDto2EntityMapper = new BaseMapper<VertexDto, Vertex>(Vertex.class) {
             @Override
-            protected void mapInto(ExerciseDependencyDto from, Vertex to) {
+            protected void mapInto(VertexDto from, Vertex to) {
                 to.setId(from.getId());
                 to.setPredecessor(dalBuilder.getSession().getReference(BaseWord.class, from.getPredecessor().getId()));
                 to.setSuccessor(dalBuilder.getSession().getReference(BaseWord.class, from.getSuccessor().getId()));
             }
         };
 
-        IMapper<Vertex, ExerciseDependencyDto> exerciseDependencyEntity2DtoMapper = new BaseMapper<Vertex, ExerciseDependencyDto>(ExerciseDependencyDto.class) {
+        IMapper<Vertex, VertexDto> exerciseDependencyEntity2DtoMapper = new BaseMapper<Vertex, VertexDto>(VertexDto.class) {
             @Override
-            protected void mapInto(Vertex from, ExerciseDependencyDto to) {
+            protected void mapInto(Vertex from, VertexDto to) {
                 to.setId(from.getId());
                 to.setPredecessor(ToOne.valueOf(from.getPredecessor().getId()));
                 to.setSuccessor(ToOne.valueOf(from.getSuccessor().getId()));
             }
         };
 
-        IMapper<ExerciseLogDto,ElementLog> exerciseLogDto2EntityMapper = new BaseMapper<ExerciseLogDto, ElementLog>(ElementLog.class) {
+        IMapper<ElementLogDto,ElementLog> exerciseLogDto2EntityMapper = new BaseMapper<ElementLogDto, ElementLog>(ElementLog.class) {
             @Override
-            protected void mapInto(ExerciseLogDto from, ElementLog to) {
+            protected void mapInto(ElementLogDto from, ElementLog to) {
                 to.setTimestamp(from.getTimestamp());
-                to.setWord(dalBuilder.getSession().getReference(BaseWord.class, from.getExercise().getId()));
+                to.setWord(dalBuilder.getSession().getReference(Word.class, from.getWord().getId()));
                 to.setQuality(from.getQuality());
                 to.setId(from.getId());
             }
         };
-        IMapper<ElementLog,ExerciseLogDto> exerciseLogEntity2DtoMapper = new BaseMapper<ElementLog, ExerciseLogDto>(ExerciseLogDto.class) {
+        IMapper<ElementLog,ElementLogDto> exerciseLogEntity2DtoMapper = new BaseMapper<ElementLog, ElementLogDto>(ElementLogDto.class) {
             @Override
-            protected void mapInto(ElementLog from, ExerciseLogDto to) {
+            protected void mapInto(ElementLog from, ElementLogDto to) {
                 to.setId(from.getId());
-                to.setExercise(ToOne.valueOf(from.getWord().getId()));
+                to.setWord(ToOne.valueOf(from.getWord().getId()));
                 to.setQuality(from.getQuality());
                 to.setTimestamp(from.getTimestamp());
             }
         };
 
-        BusinessLogicSupport<ExerciseDto, Word> exerciseBLSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDto2EntityMapper, exerciseEntity2DtoMapper);
-        BusinessLogicSupport<ExerciseDependencyDto, Vertex> exerciseDependencyLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDependencyDto2EntityMapper, exerciseDependencyEntity2DtoMapper);
-        BusinessLogicSupport<ExerciseLogDto,ElementLog> exerciseLogLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseLogDto2EntityMapper, exerciseLogEntity2DtoMapper);
+        IMapper<BaseWordDto,BaseWord> baseWordDto2EntityMapper = new BaseMapper<BaseWordDto, BaseWord>(BaseWord.class){
 
-        this.exerciseLogic = add(ExerciseDto.class, new ExerciseLogic(exerciseBLSupport));
-        this.exerciseDependencyLogic = add(ExerciseDependencyDto.class, new ExerciseDependencyLogic(exerciseDependencyLogicSupport));
-        this.exerciseLogLogic = add(ExerciseLogDto.class, new ExerciseLogLogic(exerciseLogLogicSupport, dalBuilder.getDao()));
+            @Override
+            protected void mapInto(BaseWordDto from, BaseWord to) {
+                to.setId(from.getId());
+                to.setHints(to.getHints());
+                to.setTitle(from.getTitle());
+            }
+        };
+        IMapper<BaseWord, BaseWordDto> baseWordEntity2DtoMapper = new BaseMapper<BaseWord, BaseWordDto>(BaseWordDto.class) {
+
+            @Override
+            protected void mapInto(BaseWord from, BaseWordDto to) {
+                to.setId(from.getId());
+                to.setTitle(from.getTitle());
+                to.setHints(from.getHints());
+            }
+        };
+
+        BusinessLogicSupport<WordDto, Word> exerciseBLSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDto2EntityMapper, exerciseEntity2DtoMapper);
+        BusinessLogicSupport<VertexDto, Vertex> exerciseDependencyLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseDependencyDto2EntityMapper, exerciseDependencyEntity2DtoMapper);
+        BusinessLogicSupport<ElementLogDto,ElementLog> exerciseLogLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), exerciseLogDto2EntityMapper, exerciseLogEntity2DtoMapper);
+        BusinessLogicSupport<BaseWordDto, BaseWord> baseWordLogicSupport = new BusinessLogicSupport<>(dalBuilder.getDao(), baseWordDto2EntityMapper, baseWordEntity2DtoMapper);
+
+        this.vertexLogic = add(VertexDto.class, new VertexLogic(exerciseDependencyLogicSupport));
+        this.elementLogLogic = add(ElementLogDto.class, new ElementLogLogic(exerciseLogLogicSupport, dalBuilder.getDao()));
+        this.baseWordLogic = add(BaseWordDto.class, new BaseWordLogic(baseWordLogicSupport));
     }
 
     public <U extends CapoeiraDto, T extends IBusinessLogic<U>> T getLogic(Class<U> type) {

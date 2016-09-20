@@ -49,74 +49,57 @@ public class DataSetup {
 
     private void createEntities() {
         // ===============================================================================================
-        // Exercises
+        // Words
         // ===============================================================================================
-        ExerciseDto par_qdr = add(new ExerciseDto("Parallela - Queda de Rins", "Right leg and right hand on the floor - left hand to the floor - head to floor - bend left arm - left flank to left elbow - left leg underswitch - right leg to back (straddle) and bend right knee"));
-        ExerciseDto qdr_neg_role = add(new ExerciseDto("Queda de Rins - Negativa - Rolé", "Esquiva to right - Queda de Rins with right leg facing forward, left leg bent to the back (to keep balance) - right leg bends, left leg moves forward into Negativa"));
-        ExerciseDto esq_qdr_neg_role = add(new ExerciseDto("Esquiva - Queda de Rins - Negativa - Rolé", null));
-        ExerciseDto ponte = add(new ExerciseDto("Ponte", null));
-        ExerciseDto esq_ponte = add(new ExerciseDto("Esquiva - Ponte", null));
-        ExerciseDto comp_esq_ponte = add(new ExerciseDto("Compasso - Esquiva - Ponte", null));
-        ExerciseDto rast_pir_ginga = add(new ExerciseDto("Rasteira - Piruette - Ginga", null));
-        ExerciseDto rast_pir_qdr_neg_role = add(new ExerciseDto("Rasteira - Piruette - Queda de Rins - Negativa - Rolé", null));
-        ExerciseDto rast_au = add(new ExerciseDto("Rasteira - Aù", "Rasteira (with left leg) - jump left leg to back - weight on left leg - Aù"));
-        ExerciseDto arm = add(new ExerciseDto("Armada", null));
-        ExerciseDto arm_rast_au_qdr = add(new ExerciseDto("Armada - Rasteira - Aù - Queda de Rins", null));
-        ExerciseDto frent_rast = add(new ExerciseDto("Frente - Rasteira", null));
-        ExerciseDto armdup = add(new ExerciseDto("Armada dupla", null));
-        ExerciseDto rast_mak = add(new ExerciseDto("Rasteira - Makako", null));
-        ExerciseDto par_ponte = add(new ExerciseDto("Paralella - Ponte", null));
-        ExerciseDto coc_qdr = add(new ExerciseDto("Cocorinha - Queda de Rins", "Keep both legs bent."));
-        ExerciseDto neg_qdr = add(new ExerciseDto("Negativa - Queda de Rins", "Negativa (right leg extended) - Queda de Rins to the right - switch legs - Negativa other side"));
+        BaseWordDto par_qdr = add(new BaseWordDto("Parallela - Queda de Rins", "Right leg and right hand on the floor - left hand to the floor - head to floor - bend left arm - left flank to left elbow - left leg underswitch - right leg to back (straddle) and bend right knee"));
+        BaseWordDto qdr_neg_role = add(new BaseWordDto("Queda de Rins - Negativa - Rolé", "Esquiva to right - Queda de Rins with right leg facing forward, left leg bent to the back (to keep balance) - right leg bends, left leg moves forward into Negativa"));
+        BaseWordDto esq_qdr_neg_role = add(new BaseWordDto("Esquiva - Queda de Rins - Negativa - Rolé", null));
+        BaseWordDto ponte = add(new BaseWordDto("Ponte", null));
+        BaseWordDto esq_ponte = add(new BaseWordDto("Esquiva - Ponte", null));
+        BaseWordDto comp_esq_ponte = add(new BaseWordDto("Compasso - Esquiva - Ponte", null));
+        BaseWordDto rast_pir_ginga = add(new BaseWordDto("Rasteira - Piruette - Ginga", null));
+        BaseWordDto rast_pir_qdr_neg_role = add(new BaseWordDto("Rasteira - Piruette - Queda de Rins - Negativa - Rolé", null));
+        BaseWordDto rast_au = add(new BaseWordDto("Rasteira - Aù", "Rasteira (with left leg) - jump left leg to back - weight on left leg - Aù"));
+        BaseWordDto arm = add(new BaseWordDto("Armada", null));
+        BaseWordDto arm_rast_au_qdr = add(new BaseWordDto("Armada - Rasteira - Aù - Queda de Rins", null));
+        BaseWordDto frent_rast = add(new BaseWordDto("Frente - Rasteira", null));
+        BaseWordDto armdup = add(new BaseWordDto("Armada dupla", null));
+        BaseWordDto rast_mak = add(new BaseWordDto("Rasteira - Makako", null));
+        BaseWordDto par_ponte = add(new BaseWordDto("Paralella - Ponte", null));
+        BaseWordDto coc_qdr = add(new BaseWordDto("Cocorinha - Queda de Rins", "Keep both legs bent."));
+        BaseWordDto neg_qdr = add(new BaseWordDto("Negativa - Queda de Rins", "Negativa (right leg extended) - Queda de Rins to the right - switch legs - Negativa other side"));
 
         // ===============================================================================================
-        // BaseWord Dependencies
+        // Vertices
         // ===============================================================================================
-        add(new ExerciseDependencyDto(par_qdr, qdr_neg_role));
-        add(new ExerciseDependencyDto(qdr_neg_role, esq_qdr_neg_role));
-        add(new ExerciseDependencyDto(ponte, esq_ponte));
-        add(new ExerciseDependencyDto(ponte, comp_esq_ponte));
-        add(new ExerciseDependencyDto(ponte, comp_esq_ponte));
-        add(new ExerciseDependencyDto(esq_ponte, comp_esq_ponte));
-        add(new ExerciseDependencyDto(rast_pir_ginga, rast_pir_qdr_neg_role));
-        add(new ExerciseDependencyDto(qdr_neg_role, rast_pir_qdr_neg_role));
-        add(new ExerciseDependencyDto(rast_pir_ginga, rast_au));
-        add(new ExerciseDependencyDto(arm, arm_rast_au_qdr));
-        add(new ExerciseDependencyDto(rast_pir_ginga, arm_rast_au_qdr));
-        add(new ExerciseDependencyDto(par_qdr, arm_rast_au_qdr));
-        add(new ExerciseDependencyDto(rast_au, arm_rast_au_qdr));
-        add(new ExerciseDependencyDto(esq_qdr_neg_role, arm_rast_au_qdr));
-        add(new ExerciseDependencyDto(arm, armdup));
-        add(new ExerciseDependencyDto(ponte, par_ponte));
-        add(new ExerciseDependencyDto(coc_qdr, neg_qdr));
-        add(new ExerciseDependencyDto(neg_qdr, par_qdr));
+        add(new VertexDto(par_qdr, qdr_neg_role));
+        add(new VertexDto(qdr_neg_role, esq_qdr_neg_role));
+        add(new VertexDto(ponte, esq_ponte));
+        add(new VertexDto(ponte, comp_esq_ponte));
+        add(new VertexDto(ponte, comp_esq_ponte));
+        add(new VertexDto(esq_ponte, comp_esq_ponte));
+        add(new VertexDto(rast_pir_ginga, rast_pir_qdr_neg_role));
+        add(new VertexDto(qdr_neg_role, rast_pir_qdr_neg_role));
+        add(new VertexDto(rast_pir_ginga, rast_au));
+        add(new VertexDto(arm, arm_rast_au_qdr));
+        add(new VertexDto(rast_pir_ginga, arm_rast_au_qdr));
+        add(new VertexDto(par_qdr, arm_rast_au_qdr));
+        add(new VertexDto(rast_au, arm_rast_au_qdr));
+        add(new VertexDto(esq_qdr_neg_role, arm_rast_au_qdr));
+        add(new VertexDto(arm, armdup));
+        add(new VertexDto(ponte, par_ponte));
+        add(new VertexDto(coc_qdr, neg_qdr));
+        add(new VertexDto(neg_qdr, par_qdr));
 
         // ===============================================================================================
-        // Workouts
+        // Logs
         // ===============================================================================================
-        WorkoutDto workout1 = add(new WorkoutDto("Workout 1"));
-        WorkoutDto workout2 = add(new WorkoutDto("Workout 2"));
+        add(new ElementLogDto(createDate(2016, Month.AUGUST, 28), rast_pir_ginga, Quality.UNKNOWN));
+        add(new ElementLogDto(createDate(2016, Month.AUGUST, 28), esq_ponte, null));
+        add(new ElementLogDto(createDate(2016, Month.AUGUST, 28), ponte, null));
 
-        // ===============================================================================================
-        // Workout Items
-        // ===============================================================================================
-        add(new WorkoutItemDto(0, workout1, par_qdr));
-        add(new WorkoutItemDto(1, workout1, qdr_neg_role));
-        add(new WorkoutItemDto(2, workout1, esq_qdr_neg_role));
-
-        add(new WorkoutItemDto(0, workout2, ponte));
-        add(new WorkoutItemDto(1, workout2, esq_ponte));
-        add(new WorkoutItemDto(2, workout2, comp_esq_ponte));
-
-        // ===============================================================================================
-        // BaseWord Logs
-        // ===============================================================================================
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), rast_pir_ginga, Quality.UNKNOWN));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), esq_ponte, null));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 28), ponte, null));
-
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), rast_pir_ginga, Quality.POSSIBLE));
-        add(new ExerciseLogDto(createDate(2016, Month.AUGUST, 31), par_qdr, Quality.POSSIBLE));
+        add(new ElementLogDto(createDate(2016, Month.AUGUST, 31), rast_pir_ginga, Quality.POSSIBLE));
+        add(new ElementLogDto(createDate(2016, Month.AUGUST, 31), par_qdr, Quality.POSSIBLE));
     }
 
     public static void main(String[] args) {

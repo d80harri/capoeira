@@ -6,8 +6,9 @@ import net.d80harri.capoeira.dal.data.ElementLog;
 import net.d80harri.capoeira.dal.data.Quality;
 import net.d80harri.capoeira.logic.CapoeiraLogicBuilder;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
-import net.d80harri.capoeira.logic.data.ExerciseDto;
-import net.d80harri.capoeira.logic.data.ExerciseLogDto;
+import net.d80harri.capoeira.logic.data.BaseWordDto;
+import net.d80harri.capoeira.logic.data.WordDto;
+import net.d80harri.capoeira.logic.data.ElementLogDto;
 import net.d80harri.capoeira.util.DateUtils;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.util.DateUtil;
@@ -25,8 +26,8 @@ import java.util.Date;
  */
 public class ExerciseLogLogicIT {
 
-    private ExerciseLogLogic target;
-    private ExerciseLogic exerciseLogic;
+    private ElementLogLogic target;
+    private WordLogic baseWordLogic;
 
     private Session session;
     private Transaction tx;
@@ -39,7 +40,7 @@ public class ExerciseLogLogicIT {
         tx = session.beginTransaction();
 
         builder = new CapoeiraLogicBuilder(new CapoeiraDalBuilder(session));
-        exerciseLogic = builder.getLogic(ExerciseDto.class);
+        baseWordLogic = builder.getLogic(BaseWordDto.class);
     }
 
     @After
@@ -53,22 +54,22 @@ public class ExerciseLogLogicIT {
     }
 
     @Test
-    public void testUpdateMeasurementsWhenExerciseLogIsCreated() {
-        ExerciseDto e1 = persist(new ExerciseDto("ex1", "ex1 hints"));
+    public void testUpdateMeasurementsWhenElementLogIsCreated() {
+        WordDto e1 = persist(new BaseWordDto("ex1", "ex1 hints"));
 
-        ElementLog lastLog = exerciseLogic.getLastLog(e1.getId());
+        ElementLog lastLog = baseWordLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog).isNull();
 
-        ExerciseLogDto expectedLastLog = persist(new ExerciseLogDto(new Date(),e1,Quality.IMPOSSIBLE));
-        lastLog = exerciseLogic.getLastLog(e1.getId());
+        ElementLogDto expectedLastLog = persist(new ElementLogDto(new Date(),e1,Quality.IMPOSSIBLE));
+        lastLog = baseWordLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), -1), e1, Quality.UNKNOWN));
-        lastLog = exerciseLogic.getLastLog(e1.getId());
+        persist(new ElementLogDto(DateUtils.addDays(DateUtil.now(), -1), e1, Quality.UNKNOWN));
+        lastLog = baseWordLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
 
-        expectedLastLog = persist(new ExerciseLogDto(DateUtils.addDays(DateUtil.now(), 1), e1, Quality.UNKNOWN));
-        lastLog = exerciseLogic.getLastLog(e1.getId());
+        expectedLastLog = persist(new ElementLogDto(DateUtils.addDays(DateUtil.now(), 1), e1, Quality.UNKNOWN));
+        lastLog = baseWordLogic.getLastLog(e1.getId());
         Assertions.assertThat(lastLog.getId()).isEqualTo(expectedLastLog.getId());
     }
 

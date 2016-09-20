@@ -5,13 +5,14 @@ import net.d80harri.capoeira.dal.data.ElementLog;
 import net.d80harri.capoeira.dal.data.Word;
 import net.d80harri.capoeira.logic.core.BusinessLogicSupport;
 import net.d80harri.capoeira.logic.core.SupportedBusinessLogic;
-import net.d80harri.capoeira.logic.data.ExerciseDto;
+import net.d80harri.capoeira.logic.data.ElementDto;
+import net.d80harri.capoeira.logic.data.WordDto;
 
 /**
  * Created by d80harri on 03.09.16.
  */
-public class ExerciseLogic extends SupportedBusinessLogic<ExerciseDto, Word> {
-    public ExerciseLogic(BusinessLogicSupport<ExerciseDto, Word> support) {
+public abstract class WordLogic<D extends ElementDto, E extends Element> extends ElementLogic<D, E> {
+    public WordLogic(BusinessLogicSupport<D, E> support) {
         super(support);
     }
 

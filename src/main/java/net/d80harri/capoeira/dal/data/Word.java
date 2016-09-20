@@ -9,7 +9,9 @@ import java.util.Set;
  * Created by d80harri on 19.09.16.
  */
 @Entity
-public class Word extends Element {
+public abstract class Word extends Element {
+    @OneToMany(mappedBy = "word")
+    private Set<ExpressionItem> expressions = new HashSet<>();
     public Word(String id) {
         super(id);
     }

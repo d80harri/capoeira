@@ -3,6 +3,8 @@ package net.d80harri.capoeira.dal.data;
 import net.d80harri.capoeira.dal.core.CapoeiraEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import java.util.Date;
 

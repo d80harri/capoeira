@@ -1,17 +1,19 @@
 package net.d80harri.capoeira.logic.data;
 
+import net.d80harri.capoeira.dal.data.ElementLog;
 import net.d80harri.capoeira.logic.core.CapoeiraDto;
+import net.d80harri.capoeira.logic.core.ToOne;
 
 /**
- * Created by d80harri on 03.09.16.
+ * Created by d80harri on 20.09.16.
  */
-public class ExerciseDto extends CapoeiraDto {
+public class ElementDto extends CapoeiraDto {
     private String title;
     private String hints;
 
-    public ExerciseDto() {}
+    public ElementDto() {}
 
-    public ExerciseDto(String title, String hints) {
+    public ElementDto(String title, String hints) {
         this.title = title;
         this.hints = hints;
     }
@@ -31,4 +33,5 @@ public class ExerciseDto extends CapoeiraDto {
     public void setHints(String hints) {
         this.hints = hints;
     }
+
 }
