@@ -52,7 +52,6 @@ public class DataSetup {
         // Words
         // ===============================================================================================
         BaseWordDto par_qdr = add(new BaseWordDto("Parallela - Queda de Rins", "Right leg and right hand on the floor - left hand to the floor - head to floor - bend left arm - left flank to left elbow - left leg underswitch - right leg to back (straddle) and bend right knee"));
-        BaseWordDto qdr_neg_role = add(new BaseWordDto("Queda de Rins - Negativa - Rolé", "Esquiva to right - Queda de Rins with right leg facing forward, left leg bent to the back (to keep balance) - right leg bends, left leg moves forward into Negativa"));
         BaseWordDto esq_qdr_neg_role = add(new BaseWordDto("Esquiva - Queda de Rins - Negativa - Rolé", null));
         BaseWordDto ponte = add(new BaseWordDto("Ponte", null));
         BaseWordDto esq_ponte = add(new BaseWordDto("Esquiva - Ponte", null));
@@ -68,6 +67,11 @@ public class DataSetup {
         BaseWordDto par_ponte = add(new BaseWordDto("Paralella - Ponte", null));
         BaseWordDto coc_qdr = add(new BaseWordDto("Cocorinha - Queda de Rins", "Keep both legs bent."));
         BaseWordDto neg_qdr = add(new BaseWordDto("Negativa - Queda de Rins", "Negativa (right leg extended) - Queda de Rins to the right - switch legs - Negativa other side"));
+
+        // ===============================================================================================
+        // Expressions
+        // ===============================================================================================
+        BaseWordDto qdr_neg_role = add(new BaseWordDto("Queda de Rins - Negativa - Rolé", "Esquiva to right - Queda de Rins with right leg facing forward, left leg bent to the back (to keep balance) - right leg bends, left leg moves forward into Negativa"));
 
         // ===============================================================================================
         // Vertices
