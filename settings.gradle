@@ -1,2 +1,4 @@
 rootProject.name = 'capoeira'
+include 'ui'
+include 'logic'
 

@@ -21,6 +21,10 @@
     <bytecodeTargetLevel>
       <module name="capoeira_main" target="1.8" />
       <module name="capoeira_test" target="1.8" />
+      <module name="logic_main" target="1.8" />
+      <module name="logic_test" target="1.8" />
+      <module name="ui_main" target="1.8" />
+      <module name="ui_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
