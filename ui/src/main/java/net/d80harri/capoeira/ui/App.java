@@ -15,6 +15,8 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         AddWordView appView = new AddWordView();
         Scene scene = new Scene(appView.getView());
+        final String uri = getClass().getResource("app.css").toExternalForm();
+        scene.getStylesheets().add(uri);
         stage.setTitle("Capoeira");
 
         stage.setScene(scene);
