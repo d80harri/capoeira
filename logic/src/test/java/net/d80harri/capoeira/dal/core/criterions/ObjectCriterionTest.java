@@ -1,5 +1,6 @@
 package net.d80harri.capoeira.dal.core.criterions;
 
+import net.d80harri.capoeira.dal.core.IComparableCriterion;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
@@ -13,19 +14,4 @@ public class ObjectCriterionTest {
         Assertions.fail("NYI");
     }
 
-    private static interface PersonQuery {}
-
-    private static class PersonNameCriterion extends StringColumnCriterion implements PersonQuery {
-
-        public PersonNameCriterion() {
-            super("name");
-        }
-    }
-
-    private static class PersonAgeCriterion extends IntegerColumnCriterion implements PersonQuery {
-
-        public PersonAgeCriterion() {
-            super("age");
-        }
-    }
 }

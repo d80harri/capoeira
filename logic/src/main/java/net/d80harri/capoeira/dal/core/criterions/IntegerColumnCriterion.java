@@ -6,10 +6,11 @@ import net.d80harri.capoeira.dal.core.ICriterion;
 /**
  * Created by d80harri on 25.09.16.
  */
-public class IntegerColumnCriterion extends ColumnCriterion<Integer> {
+public class IntegerColumnCriterion<T> extends ColumnCriterion<T, Integer> {
 
     public IntegerColumnCriterion(String columnName) {
         super(columnName);
     }
+
 
 }
