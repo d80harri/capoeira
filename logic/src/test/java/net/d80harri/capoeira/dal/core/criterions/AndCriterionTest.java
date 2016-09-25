@@ -11,7 +11,7 @@ public class AndCriterionTest {
 
     @Test
     public void test1() {
-        GreaterThanCriterion<Integer> older18 = GreaterThanCriterion.create(new PersonAgeCriterion(), new IntegerConstantCriterion(18));
+        IsGreaterThanCriterion<Integer> older18 = IsGreaterThanCriterion.create(new PersonAgeCriterion(), new IntegerConstantCriterion(18));
         IsEqualToCriterion<String> nameIsEqualToHarald = IsEqualToCriterion.create(new PersonNameCriterion(), new StringConstantCriterion("Harald"));
         AndCriterion andC = new AndCriterion(older18, nameIsEqualToHarald);
         Assertions.assertThat(andC.toHql()).isEqualTo("age > 18 and name = \"Harald\"");
