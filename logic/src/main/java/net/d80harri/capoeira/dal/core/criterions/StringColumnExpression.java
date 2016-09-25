@@ -3,9 +3,9 @@ package net.d80harri.capoeira.dal.core.criterions;
 /**
  * Created by d80harri on 25.09.16.
  */
-public class StringColumnCriterion<T> extends ColumnCriterion<T, String> {
+public class StringColumnExpression<T> extends ColumnExpression<T, String> {
 
-    StringColumnCriterion(String columnName) {
+    StringColumnExpression(String columnName) {
         super(columnName);
     }
 }

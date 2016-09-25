@@ -1,14 +1,7 @@
 package net.d80harri.capoeira.dal.core.criterions;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by d80harri on 25.09.16.
@@ -19,10 +12,10 @@ public class IsEqualToCriterionTest {
 
     @Test
     public void test1() {
-        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerColumnCriterion("myProp"), new IntegerConstantCriterion(5))).isEqualTo("myProp = 5");
-        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerConstantCriterion(5), new IntegerColumnCriterion("myProp"))).isEqualTo("5 = myProp");
-        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerColumnCriterion("myProp1"), new IntegerColumnCriterion("myProp2"))).isEqualTo("myProp1 = myProp2");
-        assertions.toHqlReturns(IsEqualToCriterion.create(new StringColumnCriterion("myProp1"), new StringColumnCriterion("myProp2"))).isEqualTo( "myProp1 = myProp2");
+        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerColumnExpression("myProp"), new IntegerConstantExpression(5))).isEqualTo("myProp = 5");
+        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerConstantExpression(5), new IntegerColumnExpression("myProp"))).isEqualTo("5 = myProp");
+        assertions.toHqlReturns(IsEqualToCriterion.create(new IntegerColumnExpression("myProp1"), new IntegerColumnExpression("myProp2"))).isEqualTo("myProp1 = myProp2");
+        assertions.toHqlReturns(IsEqualToCriterion.create(new StringColumnExpression("myProp1"), new StringColumnExpression("myProp2"))).isEqualTo( "myProp1 = myProp2");
     }
 
 }

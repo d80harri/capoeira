@@ -1,6 +1,5 @@
 package net.d80harri.capoeira.dal.core.criterions;
 
-import net.d80harri.capoeira.dal.core.IComparableCriterion;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

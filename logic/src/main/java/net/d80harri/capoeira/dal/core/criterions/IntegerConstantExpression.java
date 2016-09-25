@@ -3,8 +3,8 @@ package net.d80harri.capoeira.dal.core.criterions;
 /**
  * Created by d80harri on 25.09.16.
  */
-public class IntegerConstantCriterion extends ConstantCriterion<Integer> {
-    public IntegerConstantCriterion(int constantValue) {
+public class IntegerConstantExpression extends ConstantExpression<Integer> {
+    public IntegerConstantExpression(int constantValue) {
         super(constantValue);
     }
 
