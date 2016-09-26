@@ -1,4 +1,5 @@
 rootProject.name = 'capoeira'
 include 'ui'
 include 'logic'
+include 'easydal'
 

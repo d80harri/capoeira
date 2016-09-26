@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira_main.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira_main.iml" group="capoeira" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/capoeira_test.iml" filepath="$PROJECT_DIR$/.idea/modules/capoeira_test.iml" group="capoeira" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/easydal/easydal.iml" filepath="$PROJECT_DIR$/.idea/modules/easydal/easydal.iml" group="easydal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/easydal/easydal_main.iml" filepath="$PROJECT_DIR$/.idea/modules/easydal/easydal_main.iml" group="easydal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/easydal/easydal_test.iml" filepath="$PROJECT_DIR$/.idea/modules/easydal/easydal_test.iml" group="easydal" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic/logic.iml" filepath="$PROJECT_DIR$/.idea/modules/logic/logic.iml" group="logic" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic/logic_main.iml" filepath="$PROJECT_DIR$/.idea/modules/logic/logic_main.iml" group="logic" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/logic/logic_test.iml" filepath="$PROJECT_DIR$/.idea/modules/logic/logic_test.iml" group="logic" />

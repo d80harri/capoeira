@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id=":logic:test" external.linked.project.path="$MODULE_DIR$/../../../logic" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="net.d80harri.capoeira" external.system.module.type="sourceSet" external.system.module.version="0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":easydal:main" external.linked.project.path="$MODULE_DIR$/../../../easydal" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="net.d80harri.capoeira" external.system.module.type="sourceSet" external.system.module.version="0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
-    <output-test url="file://$MODULE_DIR$/../../../logic/build/classes/test" />
+    <output url="file://$MODULE_DIR$/../../../easydal/build/classes/main" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../logic/src/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../../logic/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../logic/src/test/resources" type="java-test-resource" />
+    <content url="file://$MODULE_DIR$/../../../easydal/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../easydal/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../easydal/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="logic_main" />
-    <orderEntry type="module" module-name="easydal_main" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.2.Final" level="project" />
-    <orderEntry type="library" name="Gradle: com.h2database:h2:1.4.192" level="project" />
-    <orderEntry type="library" name="Gradle: junit:junit:4.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.assertj:assertj-core:3.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.20.0-GA" level="project" />
@@ -25,13 +20,9 @@
     <orderEntry type="library" name="Gradle: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Gradle: javax.enterprise:cdi-api:1.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream:1.2.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" name="Gradle: javax.el:el-api:2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:1.0.0.Beta1" level="project" />
     <orderEntry type="library" name="Gradle: javax.annotation:jsr250-api:1.0" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Gradle: xpp3:xpp3_min:1.1.3.4.O" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="logic_main" />
 </module>
