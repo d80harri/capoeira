@@ -9,6 +9,9 @@ before_script:
 #  - echo `pwd` # debug
 #  - echo "$CI_BUILD_NAME, $CI_BUILD_REF_NAME $CI_BUILD_STAGE" # debug
   - export GRADLE_USER_HOME=`pwd`/.gradle
+  - add-apt-repository ppa:webupd8team/java
+  - apt-get update
+  - apt-get install -y oracle-java8-installer 
 
 cache:
   paths:
