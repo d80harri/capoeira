@@ -7,7 +7,7 @@ import net.d80harri.easydal.IExpression;
  */
 public class IsEqualToCriterion<T, C> extends ComparatorCriterion<T, C> {
 
-    private IsEqualToCriterion(Class<T> entityType, IExpression<T, C> left, IExpression<T, C> right) {
+    public IsEqualToCriterion(Class<T> entityType, IExpression<T, C> left, IExpression<T, C> right) {
         super(entityType, left, right);
     }
     public String toHql() {

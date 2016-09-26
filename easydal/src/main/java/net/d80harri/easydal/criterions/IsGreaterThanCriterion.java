@@ -8,7 +8,7 @@ import net.d80harri.easydal.ICriterion;
  */
 public class IsGreaterThanCriterion<T, C> extends ComparatorCriterion<T, C> {
 
-    private IsGreaterThanCriterion(Class<T> entityType, IExpression<T, C> greater, IExpression<T, C> smaller) {
+    IsGreaterThanCriterion(Class<T> entityType, IExpression<T, C> greater, IExpression<T, C> smaller) {
         super(entityType, greater, smaller);
     }
     public String toHql() {

@@ -7,7 +7,7 @@ import net.d80harri.easydal.IExpression;
  */
 public class IsLessThanCriterion<T, C> extends ComparatorCriterion<T, C> {
 
-    private IsLessThanCriterion(Class<T> entityType, IExpression<T, C> left, IExpression<T, C> right) {
+    IsLessThanCriterion(Class<T> entityType, IExpression<T, C> left, IExpression<T, C> right) {
         super(entityType, left, right);
     }
     public String toHql() {
